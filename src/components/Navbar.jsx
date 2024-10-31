@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import React, { useEffect, useRef, useState } from "react";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const [scrolled, setScrolled] = useState(false);
-
+  const menuRef = useRef();
   useEffect(() => {
     const handleScroll = () => {
-      // console.log("working")
       const offset = window.scrollY;
       if (offset > 100) {
         setScrolled(true);
@@ -22,19 +23,37 @@ const Navbar = () => {
     };
   }, []);
 
+  useGSAP(() => {
+    if (menuOpen) {
+      gsap.from(menuRef.current, {
+        opacity: 0,
+        duration: 0.1,
+      });
+    }
+  }, [menuOpen]);
+
   const scrollToSection = (targetId) => {
     const targetElement = document.getElementById(targetId);
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: "smooth" });
-      setMenuOpen(false); // Close the menu after clicking
+      setMenuOpen(false);
     }
   };
 
+  // useGSAP(() => {
+  //   gsap.from(navRef.current, {
+  //     y: -100,
+  //     opacity: 0,
+  //     duration: 0.5,
+  //     delay: 0.8
+  //   })
+  // })
+
   return (
     <nav
-      className={`px-[2.5rem] py-[2rem] flex justify-between sticky top-0 z-10 ${
+      className={`px-[2.5rem] py-[2rem] flex justify-between  ${
         scrolled
-          ? `backdrop-blur-md border-b border-white/50`
+          ? `backdrop-blur-sm border-none border-white/50`
           : "bg-transparent"
       }`}
     >
@@ -57,9 +76,10 @@ const Navbar = () => {
         </h1>
       </div>
       <div
+        ref={menuRef}
         className={
           menuOpen
-            ? "full h-fit bg-white/15 w-[60%] md:w-[30%] absolute right-[2.5rem] top-[4rem] transition-all duration-300 ease-in-out flex flex-col  justify-center items-center gap-[2rem] px-[2.5rem] py-[1rem] text-3xl overflow-hidden rounded-lg font-[font-2] z-10"
+            ? "full h-fit bg-black/80 shadow-lg shadow-white/90 w-[60%] md:w-[30%] absolute right-[2.5rem] top-[4rem] transition-all duration-300 ease-in-out flex flex-col  justify-center items-center gap-[2rem] px-[2.5rem] py-[1rem] text-3xl overflow-hidden rounded-lg font-[font-2] "
             : "hidden transition-all ease-in-out duration-300"
         }
       >
