@@ -1,19 +1,19 @@
-import './App.css';
-import About from './components/About';
-import Connect from './components/Connect';
-import Footer from './components/Footer';
-import Home from './components/Home';
-import Navbar from './components/Navbar';
-import Projects from './components/Projects';
-import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useGSAP } from '@gsap/react';
+import "./App.css";
+import About from "./components/About";
+import Connect from "./components/Connect";
+import Footer from "./components/Footer";
+import Home from "./components/Home";
+import Navbar from "./components/Navbar";
+import Projects from "./components/Projects";
+import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
-  const navbarRef = useRef(null);
+  const navbarRef = useRef();
   const sectionsRef = useRef([]);
 
   useGSAP(() => {
@@ -33,23 +33,32 @@ function App() {
           start: "top 80%",
           end: "top 50%",
           toggleActions: "play none none none",
-          once:  true
+          once: true,
         },
-
       });
     });
   }, []);
 
   return (
     <main className="mainn bg min-h-screen">
-      <div ref={navbarRef} className='sticky top-0 z-20'>
+      <div ref={navbarRef} className="sticky top-0 z-20">
         <Navbar />
       </div>
-      <section ref={(el) => (sectionsRef.current[0] = el)}><Home /></section>
-      <section ref={(el) => (sectionsRef.current[1] = el)}><About /></section>
-      <section ref={(el) => (sectionsRef.current[2] = el)}><Projects /></section>
-      <section ref={(el) => (sectionsRef.current[3] = el)}><Connect /></section>
-      <section ><Footer /></section>
+      <section ref={(el) => (sectionsRef.current[0] = el)}>
+        <Home />
+      </section>
+      <section ref={(el) => (sectionsRef.current[1] = el)}>
+        <About />
+      </section>
+      <section ref={(el) => (sectionsRef.current[2] = el)}>
+        <Projects />
+      </section>
+      <section>
+        <Connect />
+      </section>
+      <section>
+        <Footer />
+      </section>
     </main>
   );
 }
