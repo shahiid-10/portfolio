@@ -1,6 +1,6 @@
 import { ExternalLink, Github } from "lucide-react";
 import NFT_DAPP from "../assets/NFT_dapp.png";
-import NEON_NFT from "../assets/Landing_NEON_NFT.png";
+import BallonBid from "../assets/BallonBid.png";
 import ASTROL_LANDING from "../assets/Astrol_Landing.png";
 import React from "react";
 import { BsGithub } from "react-icons/bs";
@@ -14,18 +14,18 @@ const Projects = () => {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           <ProjectCard
-            title="Landing Page NEON NFT"
-            description="Explore NEON NFT — a vibrant digital space to discover and collect unique art, enhanced with smooth GSAP animations."
-            image={NEON_NFT}
-            tags={["React", "GSAP"]}
-            projectUrl="https://landing-neon-nft.vercel.app/"
-            githubUrl="https://github.com/shahiid-10/landing_neon_nft"
+            title="BallonBid | NFT Auction dapp"
+            description="BallonBid is NFT Auction dApp which is fully automated decentralized platform for auctioning unique NFTs featuring iconic images of famous footballers like Messi, Ronaldinho, and others. This dApp enables users to bid on exclusive NFTs, ensuring a transparent and secure auction process.."
+            image={BallonBid}
+            tags={["Solidity", "Foundry", "React.js", "Framer Motion", "Tailwind Css", "IPFS", ]}
+            projectUrl="https://ballon-bid.vercel.app/"
+            githubUrl="https://github.com/shahiid-10/BallonBid-dapp"
           />
           <ProjectCard
             title="NFT dapp"
             description="100x NFT dApp — a seamless platform on the Sepolia chain to mint, view, and manage NFTs. Built with React and Tailwind CSS for a fast, responsive experience."
             image={NFT_DAPP}
-            tags={["React.js", "Tailwind Css", "IPFS", "NFT"]}
+            tags={["Solidity", "Foundry", "React.js", "Tailwind Css", "IPFS", "NFT"]}
             projectUrl="https://100x-nftdapp.vercel.app/"
             githubUrl="https://github.com/shahiid-10/100xNFT-dapp"
           />
